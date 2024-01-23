@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>portfolio website</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="header">
+        <div class="container">
+            <nav>
+                <img src="LOGOO.png" class="logo">
+                <ul>
+                    <li><a href="#header">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-txt">
+                <p>Web Developer</p>
+                <h1>Hi, I'm <span>Divyanshi Rahangdale</span> <br>From Nagpur</h1>
+            </div>
+        </div>
+    </div>
+    <!---------about---------->
+    <div id="about">
+        <div class="container">
+            <div class="row">
+                <div class="abt-col-1">
+                    <img src="meportfolio.jpg">
+                </div>
+                <div class="abt-col-2"><br><br>
+                    <h1 class="subtitle">About Me</h1><br>
+                    <p>Passionate computer science engineering student skilled in HTML,CSS,DSA,C and PYTHON programming language, loves to dive myself into various tech challenges to stay updated with new trends and web designing is my field of interest.
+                        <BR> I am well experienced in building web with HTML,JAVASCRIPT,and CSS is the glow of my websites.</p>
+                    <div class="tab-titles">
+                        <p class="tab-links active-link" onclick="opentab('skills')">Skills</p>
+                        <p class="tab-links" onclick="opentab('project')">Project</p>
+                        <p class="tab-links" onclick="opentab('education')">Educations</p>
+                    </div>
+                    <div class="tab-contents active-tab" id="skills">
+                        <ul>
+                            <li><span>Technical Skills</span>
+                                <br>1.DSA<br>2.DBMS
+                                <BR>3.OS<br>4.Web Development
+                            </li>
+                            <li><span>Communication Skills</span><br></li>
+                            <li><span>Problem Solving</span><br></li>
+                            <li><span>Leadership Skills</span><br></li>
+                        </ul>
+                    </div>
+                    <div class="tab-contents" id="project">
+                        <ul>
+                            <li><span>Game Development by python</span><br>KBC and Snake Water and Gun game etc.
+                            </li>
+                            <li><span>Iot Projects</span><br> using NODEMCU ,Arduino.</li>
+                            <li><span>Various Websites</span><br>News website etc.</li>
+                        </ul>
+                    </div>
+                    <div class="tab-contents" id="education">
+                        <ul>
+                            <li><span>SSC</span>
+                                <BR>SSC from VMG Gondia
+                            </li>
+                            <li><span>HSC</span><br>HSC from S.M.Patel Gondia</li>
+                            <li><span>BTECH</span><br>BTEC in computer science from G.H.Raisoni College of engineering</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!------------contact---------->
+    <div id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="contact-left"><br>
+                    <h1 class="subtitle">Contact Me</h1>
+                    <p><i class="fa-solid fa-paper-plane"></i>divyanshirahangdale@gmail.com</p>
+                    <p><i class="fa-solid fa-phone"></i>9373846995</p>
+                    <div class="social-icons">
+                        <a href=""><i class="fa-brands fa-facebook"></i></a>
+                        <a href=""><i class="fa-brands fa-instagram"></i></a>
+                        <a href=""><i class="fa-brands fa-twitter"></i></a>
+                        <a href=""><i class="fa-brands fa-youtube"></i></a>
+                    </div><br>
+                    <a href="Divyanshi Resume  - 1686297742.pdf" download class="btn btn2">Download CV (Resume)</a>
+                </div>
+                <div class="contact-right">
+                    <form name="submit-to-google-sheet">
+                        <input type="text" name="Name" placeholder="your name" required>
+                        <input type="email" name="Email" placeholder="your email" required>
+                        <textarea name="Message" rows="5" placeholder="your message"></textarea>
+                        <button type="submit" class="btn btn2">Submit</button>
+                    </form>
+                    <span id="msg"></span>
+                </div>
+
+            </div>
+            <br><br>
+            <div class="copyright">
+                <p>Copyright @ Divyanshi Rahangdale.<i class="fa-solid fa-heart"></i></p>
+            </div>
+        </div>
+    </div>
+    <script>
+        var tablinks = document.getElementsByClassName("tab-links");
+        var tabcontents = document.getElementsByClassName("tab-contents");
+
+        function opentab(tabname) {
+            for (tablink of tablinks) {
+                tablink.classList.remove("active-link");
+            }
+            for (tabcontent of tabcontents) {
+                tabcontent.classList.remove("active-tab");
+            }
+            event.currentTarget.classList.add("active-link");
+            document.getElementById(tabname).classList.add("active-tab");
+
+        }
+    </script>
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbxs5jFlJ1OXu98VmyooCSZa3djD-nWpOUH9kGHE3LIE06hZgyCroI0Cs2I6EATJ4_J1/exec'
+        const form = document.forms['submit-to-google-sheet']
+        const msg = document.getElementById("msg")
+        form.addEventListener('submit', e => {
+            e.preventDefault()
+            fetch(scriptURL, {
+                    method: 'POST',
+                    body: new FormData(form)
+                })
+                .then(response => {
+                    msg.innerHTML = "Message sent successfully"
+                    setTimeout(function() {
+                        msg.innerHTML = ""
+                    }, 5000)
+                    form.reset()
+                })
+                .catch(error => console.error('Error!', error.message))
+        })
+    </script>
+</body>
+
+</html>
